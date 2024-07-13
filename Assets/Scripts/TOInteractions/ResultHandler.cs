@@ -39,9 +39,14 @@ public class ResultHandler : SingletonBase<ResultHandler>
                 resultDisplayer.text = "Miss";
                 break;
             }
+            case HitResult.Result.Why:
+            {
+                resultDisplayer.text = "Miss (no attack)";
+                break;
+            }
             default:
             {
-                resultDisplayer.text = "RESULTHANDLER.CS : 44 [ERROR]";
+                resultDisplayer.text = "RESULTHANDLER.CS : 49 [ERROR]";
                 //todo log error / crash because something is wrong
                 break;
             }

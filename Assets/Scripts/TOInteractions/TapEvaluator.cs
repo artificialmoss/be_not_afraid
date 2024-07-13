@@ -10,6 +10,15 @@ public class TapEvaluator : TimedObjectEvaluator
     public override HitResult EvaluateTap(SingleTapDescriptor tapDescriptor) 
     {
         // чек валидацию данных
+        if (!tapDescriptor.IsValidTimedObject())
+        {
+            return new HitResult { ResultState = HitResult.Result.Why, BaseDamage = 0 };
+        }
+
+        if (!tapDescriptor.IsValidTap())
+        {
+            return new HitResult { ResultState = HitResult.Result.Miss, BaseDamage = 0 };
+        }
 
         if (tapDescriptor.TapTime < tapDescriptor.Appearance)
         {
