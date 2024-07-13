@@ -12,11 +12,11 @@ public class Synchronizer : SingletonBase<Synchronizer>
 
     public void OnTimedObjectActivation(double activationTime)
     {
-        currentTapDescriptor.Appearance = activationTime;
         if (currentTapDescriptor.IsValidTapTime() && currentTapDescriptor.IsValidUntapTime())
         {
             SendToEvaluationAndDestroy();
         }
+        currentTapDescriptor.Appearance = activationTime;
     }
 
     public void OnTimedObjectDeactivation(double deactivationTime)

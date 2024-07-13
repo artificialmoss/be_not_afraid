@@ -4,7 +4,7 @@ public class TapEvaluator : TimedObjectEvaluator
 {
     public void Start()
     {
-        offset = 1000;
+        offset = 0.1;
     }
 
     public override HitResult EvaluateTap(SingleTapDescriptor tapDescriptor) 
@@ -30,7 +30,7 @@ public class TapEvaluator : TimedObjectEvaluator
         {
             if (tapDescriptor.TapTime >= tapDescriptor.Appearance + offset)
             {
-                if (tapDescriptor.Disappearance <= tapDescriptor.Disappearance - offset)
+                if (tapDescriptor.UntapTime <= tapDescriptor.Disappearance - offset)
                 {
                     return new HitResult { ResultState = HitResult.Result.Perfect, BaseDamage = MaxPoints }
                         ;
@@ -39,7 +39,7 @@ public class TapEvaluator : TimedObjectEvaluator
                 return new HitResult { ResultState = HitResult.Result.Good, BaseDamage = MaxPoints };
             }
 
-            if (tapDescriptor.Disappearance <= tapDescriptor.Disappearance - offset)
+            if (tapDescriptor.UntapTime <= tapDescriptor.Disappearance - offset)
             {
                 return new HitResult { ResultState = HitResult.Result.Good, BaseDamage = MaxPoints }
                     ;
