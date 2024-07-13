@@ -1,29 +1,32 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class TimedButtonPrototype : TimedObject
+[RequireComponent(typeof(Image))]
+public class TimedPanelPrototype : TimedObject
 {
     private CanvasRenderer _renderer;
+    private Image _color;
     
     // имитация музыки?
     public override void Start()
     {
-        appearanceTime = AudioSettings.dspTime + 15;
-        disappearanceTime = AudioSettings.dspTime + 20;
+        appearanceTime = AudioSettings.dspTime;
+        disappearanceTime = AudioSettings.dspTime + 0.7;
         _renderer = gameObject.GetComponent<CanvasRenderer>();
-        _renderer.cull = true;
+        _color = gameObject.GetComponent<Image>();
         Debug.Log(AudioSettings.dspTime);
     }
 
     protected override void Appear()
     {
-        _renderer.cull = false;
+        _color.color = Color.cyan;
         Debug.Log("APPEAR?");
     }
 
     protected override void Disappear()
     {
-        _renderer.cull = false;
         Debug.Log("DISAPPEAR");
+        Destroy(gameObject);
     }
 }
