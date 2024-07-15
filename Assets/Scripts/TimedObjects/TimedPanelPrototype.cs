@@ -5,45 +5,44 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class TimedPanelPrototype : TimedObject
 {
-    [SerializeField] private Vector2 startingPosition = new Vector2(0, 350);
-    [SerializeField] private Vector2 targetPosition = new Vector2(0, -350);
+    [SerializeField] private Vector2 startingPosition;
     [SerializeField] private double appearanceOffset = 0.4;
     [SerializeField] private double disappearanceOffset = 0.7;
+    
+    
     // [SerializeField] private GameObject startingPositionObject;
     // [SerializeField] private GameObject targetPositionObject;
+
+    // [SerializeField] private double timeDistance = disappearanceOffset;
+    [SerializeField] private Vector2 distance = new Vector2(0, -700);
 
     // имитация музыки?
     public override void Start()
     {
+        startingPosition = gameObject.transform.position;
         anticipationTime = AudioSettings.dspTime;
         appearanceTime = AudioSettings.dspTime + appearanceOffset;
         disappearanceTime = AudioSettings.dspTime + disappearanceOffset;
-        Debug.Log("знаменатель " + (disappearanceTime - anticipationTime));
-        // startingPosition = startingPositionObject.transform.position;
-        // targetPosition = targetPositionObject.transform.position;
-        Debug.Log(AudioSettings.dspTime);
+        gameObject.transform.position = startingPosition;
+        // timeDistance = disappearanceTime - anticipationTime;
+        // Debug.Log(AudioSettings.dspTime);
     }
 
     protected override void Move()
     {
         
-        // Debug.Log((AudioSettings.dspTime - anticipationTime));
         
-        float point = (float)((AudioSettings.dspTime - anticipationTime) / (disappearanceTime - anticipationTime));
-        
-        // Debug.Log("точка " + point);
-        gameObject.transform.position += (Vector3)(point * (targetPosition - startingPosition));
+        float point = (float)((AudioSettings.dspTime - anticipationTime) / disappearanceOffset);
+        gameObject.transform.position = startingPosition + point * distance;
     }
 
     protected override void Appear()
     {
-        Debug.Log("APPEAR?");
     }
 
     protected override void Disappear()
     {
-        Debug.Log("DISAPPEAR");
-        gameObject.SetActive(false);
+        Destroy(gameObject);
         // Destroy(gameObject);
     }
 }

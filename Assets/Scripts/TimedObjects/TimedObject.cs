@@ -34,15 +34,14 @@ public abstract class TimedObject : MonoBehaviour
         }
         else
         {
-            if (hasAppeared && AudioSettings.dspTime >= disappearanceTime)
+            if (!hasAppeared) return;
+
+            Move();
+            if (AudioSettings.dspTime >= disappearanceTime)
             {
                 hasAppeared = false;
                 Disappear();
                 Synchronizer.Instance.OnTimedObjectDeactivation(disappearanceTime);
-            }
-            else
-            {
-                Move();
             }
         }
     }
