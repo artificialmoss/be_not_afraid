@@ -88,9 +88,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c501abfee648d7b9895a7226b5e8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anticipationTime: 0
   appearanceTime: 0
   disappearanceTime: 0
   hasAppeared: 0
+  startingPosition: {x: 0, y: 0}
+  targetPosition: {x: 0, y: 0}
+  appearanceOffset: 0
+  disappearanceOffset: 0
 --- !u!1 &3101496297709404725
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,8 +133,8 @@ RectTransform:
   - {fileID: 2230971480572309618}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1280, y: 849}
   m_SizeDelta: {x: 91, y: 91}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -246,6 +251,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c501abfee648d7b9895a7226b5e8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anticipationTime: 0
   appearanceTime: 0
   disappearanceTime: 0
   hasAppeared: 0
+  startingPosition: {x: 0, y: 350}
+  targetPosition: {x: 0, y: -350}
+  appearanceOffset: 0.4
+  disappearanceOffset: 0.7

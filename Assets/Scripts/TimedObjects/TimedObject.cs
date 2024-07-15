@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public abstract class TimedObject : MonoBehaviour
 {
+    [SerializeField] protected double anticipationTime;
     [SerializeField] protected double appearanceTime;
     [SerializeField] protected double disappearanceTime;
 
@@ -17,6 +19,8 @@ public abstract class TimedObject : MonoBehaviour
     protected abstract void Appear();
 
     protected abstract void Disappear();
+
+    protected abstract void Move();
 
     public virtual void Update()
     {
@@ -35,6 +39,10 @@ public abstract class TimedObject : MonoBehaviour
                 hasAppeared = false;
                 Disappear();
                 Synchronizer.Instance.OnTimedObjectDeactivation(disappearanceTime);
+            }
+            else
+            {
+                Move();
             }
         }
     }
