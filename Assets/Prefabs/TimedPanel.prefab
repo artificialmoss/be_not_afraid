@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7938003999738522239}
   - component: {fileID: 3444286957285167103}
   m_Layer: 5
-  m_Name: TimedPanel11
+  m_Name: TimedPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,8 +157,10 @@ MonoBehaviour:
   anticipationTime: 0
   appearanceTime: 0
   disappearanceTime: 0
+  state: 0
   hasAppeared: 0
-  startingPosition: {x: 0, y: 350}
-  targetPosition: {x: 0, y: -350}
-  appearanceOffset: 0.4
-  disappearanceOffset: 0.7
+  startingPosition: {x: 0, y: 0}
+  appearanceOffset: 0.6
+  disappearanceOffset: 1
+  timeDistance: 0
+  distance: {x: 0, y: -1000}
