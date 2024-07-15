@@ -10,7 +10,7 @@ public class BeatController : MonoBehaviour
     [SerializeField] private List<double> timings;
     [SerializeField] private double startTime;
     [SerializeField] private int nextBeatCounter = 0;
-    [SerializeField] private double beatTimeOffset = 0.2;
+    [SerializeField] private double beatTimeOffset = 0.5;
 
     void Start()
     {
@@ -21,7 +21,7 @@ public class BeatController : MonoBehaviour
         // processor.onSpectrum.AddListener (onSpectrum);
         startTime = AudioSettings.dspTime;
         timings = JsonUtility.FromJson<TimingsList>(
-            File.ReadAllText(Path.Combine(Application.dataPath, "Resources/timings.json"))).Timings;
+            File.ReadAllText(Path.Combine(Path.Combine(Application.dataPath, "Resources"), "timings_simple.json"))).Timings;
     }
 
     //this event will be called every time a beat is detected.

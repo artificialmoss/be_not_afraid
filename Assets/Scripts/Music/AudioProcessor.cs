@@ -26,7 +26,7 @@ using File = System.IO.File;
 [RequireComponent(typeof(AudioSource))]
 public class AudioProcessor : MonoBehaviour
 {
-    private bool isActive = true;
+    [SerializeField] private bool isActive = true;
     public AudioSource audioSource;
 
     [SerializeField] private double start;

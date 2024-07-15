@@ -40,10 +40,7 @@ public class Synchronizer : SingletonBase<Synchronizer>
     public void OnInteractionEnd(double dropTime)
     {
         currentTapDescriptor.UntapTime = dropTime;
-        if (currentTapDescriptor.IsValidTimedObject() || !currentTapDescriptor.IsValidAppearance())
-        {
-            SendToEvaluationAndDestroy();
-        }
+        SendToEvaluationAndDestroy();
     }
 
     private void SendToEvaluationAndDestroy()

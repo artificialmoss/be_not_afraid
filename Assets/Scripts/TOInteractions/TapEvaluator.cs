@@ -1,18 +1,26 @@
 using System;
+using UnityEngine;
 
 public class TapEvaluator : TimedObjectEvaluator
 {
-    public void Start()
-    {
-        offset = 0.1;
-    }
+    [SerializeField] private double appearanceLength = 0.717 - 0.44;
+    [SerializeField] private double perfectOffset = 0.05;
+    [SerializeField] private double marginOfError = 0.15;
 
-    public override HitResult EvaluateTap(SingleTapDescriptor tapDescriptor) 
+    public override HitResult EvaluateTap(SingleTapDescriptor tapDescriptor)
     {
+        // ПЕРЕДЕЛАТЬ ЦЕЛИКОМ?
+
+
         // чек валидацию данных
         if (!tapDescriptor.IsValidTimedObject())
         {
-            return new HitResult { ResultState = HitResult.Result.Why, BaseDamage = 0 };
+            if (tapDescriptor.IsValidTap() && !tapDescriptor.IsValidAppearance())
+            {
+                return new HitResult { ResultState = HitResult.Result.Why, BaseDamage = 0 };
+            }
+
+            tapDescriptor.Disappearance = appearanceLength + tapDescriptor.Appearance;
         }
 
         if (!tapDescriptor.IsValidTap())
@@ -20,37 +28,21 @@ public class TapEvaluator : TimedObjectEvaluator
             return new HitResult { ResultState = HitResult.Result.Miss, BaseDamage = 0 };
         }
 
-        if (tapDescriptor.TapTime < tapDescriptor.Appearance)
+        if (tapDescriptor.TapTime > tapDescriptor.Appearance + perfectOffset &&
+            tapDescriptor.UntapTime + perfectOffset < tapDescriptor.Disappearance)
         {
-            return new HitResult { ResultState = HitResult.Result.Early, BaseDamage = 0 };
+            return new HitResult() { ResultState = HitResult.Result.Perfect, BaseDamage = 0 };
         }
 
-        if (tapDescriptor.TapTime > tapDescriptor.Appearance
-            && tapDescriptor.TapTime < tapDescriptor.Disappearance)
+        if (tapDescriptor.TapTime > tapDescriptor.Appearance && tapDescriptor.UntapTime < tapDescriptor.Disappearance)
         {
-            if (tapDescriptor.TapTime >= tapDescriptor.Appearance + offset)
-            {
-                if (tapDescriptor.UntapTime <= tapDescriptor.Disappearance - offset)
-                {
-                    return new HitResult { ResultState = HitResult.Result.Perfect, BaseDamage = MaxPoints }
-                        ;
-                }
-
-                return new HitResult { ResultState = HitResult.Result.Good, BaseDamage = MaxPoints };
-            }
-
-            if (tapDescriptor.UntapTime <= tapDescriptor.Disappearance - offset)
-            {
-                return new HitResult { ResultState = HitResult.Result.Good, BaseDamage = MaxPoints }
-                    ;
-            }
-
-            return new HitResult { ResultState = HitResult.Result.Okay, BaseDamage = MaxPoints };
+            return new HitResult { ResultState = HitResult.Result.Good, BaseDamage = 0 };
         }
 
-        if (tapDescriptor.UntapTime > tapDescriptor.Disappearance)
+        if (tapDescriptor.TapTime + marginOfError > tapDescriptor.Appearance &&
+            tapDescriptor.UntapTime < tapDescriptor.Disappearance + marginOfError)
         {
-            return new HitResult { ResultState = HitResult.Result.Late, BaseDamage = 0 };
+            return new HitResult { ResultState = HitResult.Result.Okay, BaseDamage = 0 };
         }
 
         return new HitResult { ResultState = HitResult.Result.Miss, BaseDamage = 0 };

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class TimedPanelPrototype : TimedObject
 {
     [SerializeField] private Vector2 startingPosition;
-    [SerializeField] private double appearanceOffset = 0.6;
-    [SerializeField] private double disappearanceOffset = 0.84;
+    [SerializeField] private double appearanceOffset = 0.44;
+    [SerializeField] private double disappearanceOffset = 0.717;
     [SerializeField] private double destructionOffset = 1;
 
     // старт -- 100, центр кнопки -- -615, полкнопки -- 120
@@ -17,7 +17,7 @@ public class TimedPanelPrototype : TimedObject
     // [SerializeField] private GameObject targetPositionObject;
 
     [SerializeField] private double timeDistance;
-    [SerializeField] private Vector2 distance = new Vector2(0, -1000);
+    [SerializeField] private Vector2 distance = new Vector2(0, -965);
 
     // имитация музыки?
     public override void Start()
@@ -40,12 +40,12 @@ public class TimedPanelPrototype : TimedObject
 
     protected override void Appear()
     {
-        Debug.Log("APPEAR");
+        // Debug.Log("APPEAR at " + gameObject.transform.position);
     }
 
     protected override void Disappear()
     {
-        Debug.Log("Disappear");
+        // Debug.Log("Disappear at " + gameObject.transform.position);
         // Destroy(gameObject);
         // Destroy(gameObject);
     }

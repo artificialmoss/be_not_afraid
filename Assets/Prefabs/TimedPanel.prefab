@@ -157,10 +157,11 @@ MonoBehaviour:
   anticipationTime: 0
   appearanceTime: 0
   disappearanceTime: 0
+  destructionTime: 0
   state: 0
-  hasAppeared: 0
   startingPosition: {x: 0, y: 0}
-  appearanceOffset: 0.6
-  disappearanceOffset: 1
+  appearanceOffset: 0.46
+  disappearanceOffset: 0.72
+  destructionOffset: 1
   timeDistance: 0
-  distance: {x: 0, y: -1000}
+  distance: {x: 0, y: -965}
