@@ -40,12 +40,12 @@ public class BeatController : MonoBehaviour
     void onOnbeatDetected()
     {
         // todo 
-        timings.Add(AudioSettings.dspTime);
+        // timings.Add(AudioSettings.dspTime);
         ++counter;
-        if (counter % 4 == 1)
-        {
+        // if (counter % 4 == 2)
+        // {
             MoleGenerator.Instance.CreateTimedObject();
-        }
+        // }
 
 
         // Debug.Log(AudioSettings.dspTime + " beat");

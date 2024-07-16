@@ -95,34 +95,5 @@ public abstract class TimedObject : MonoBehaviour
                 return;
             }
         }
-
-        // if (AudioSettings.dspTime < anticipationTime) return;
-        //
-        // if (state == State.Nothing)
-        // {
-        //     state = State.Anticipation;
-        // }
-        //
-        // Move();
-        //
-        // if (!hasAppeared && AudioSettings.dspTime >= appearanceTime)
-        // {
-        // }
-        //
-        // if (!hasAppeared && AudioSettings.dspTime < disappearanceTime)
-        // {
-        //     hasAppeared = true;
-        //     Appear();
-        //     Synchronizer.Instance.OnTimedObjectActivation(appearanceTime);
-        // }
-        // else
-        // {
-        //     if (!hasAppeared) return;
-        //     if (AudioSettings.dspTime >= disappearanceTime)
-        //     {
-        //         hasAppeared = false;
-        //         Disappear();
-        //     }
-        // }
     }
 }
