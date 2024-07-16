@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelState : SingletonBase<LevelState>
 {
@@ -50,8 +51,17 @@ public class LevelState : SingletonBase<LevelState>
                 break;
             }
         }
-        Debug.Log("Player: " + player.GetHealth());
-        Debug.Log("Monster: " + monsters[currentMonsterIndex].GetHealth());
-        Debug.Log(result);
+        // Debug.Log("Player: " + player.GetHealth());
+        // Debug.Log("Monster: " + monsters[currentMonsterIndex].GetHealth());
+        // Debug.Log(result);
+        if (player.GetHealth() == 0)
+        {
+            SceneManager.LoadSceneAsync("LoseEndScreen");
+        }
+
+        if (monsters[currentMonsterIndex].GetHealth() == 0)
+        {
+            SceneManager.LoadSceneAsync("WinEndscreen");
+        }
     }
 }

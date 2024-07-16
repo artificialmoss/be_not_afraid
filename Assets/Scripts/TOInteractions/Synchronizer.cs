@@ -47,7 +47,7 @@ public class Synchronizer : SingletonBase<Synchronizer>
     {
         // Debug.Log(currentTapDescriptor);
         var result = TapEvaluator.Instance.EvaluateTap(currentTapDescriptor);
-        // ResultHandler.Instance.DisplayResult(result);
+        ResultHandler.Instance.DisplayResult(result);
         LevelState.Instance.HandleAttack(result.ResultState);
         currentTapDescriptor.Invalidate();
     }
