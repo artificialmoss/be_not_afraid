@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class HealthController : MonoBehaviour
@@ -7,6 +8,7 @@ public class HealthController : MonoBehaviour
     [SerializeField] private int health;
     [SerializeField] private int maxHealth;
     [SerializeField] private int minHealth = 0;
+    [SerializeField] private GameObject visualIndicator;
 
     public void Start()
     {
@@ -54,5 +56,19 @@ public class HealthController : MonoBehaviour
         {
             health = minHealth;
         }
+    }
+
+    public void AdjustVisualsHorizontally()
+    {
+        var scale = visualIndicator.transform.localScale;
+        scale.x = (float) HealthPercentage();
+        visualIndicator.transform.localScale = scale;
+    }
+    
+    public void AdjustVisualsVertically()
+    {
+        var scale = visualIndicator.transform.localScale;
+        scale.y = (float) HealthPercentage();
+        visualIndicator.transform.localScale = scale;
     }
 }

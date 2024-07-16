@@ -17,6 +17,7 @@ public class Monster : MonoBehaviour
     public void TakeDamage(int damage)
     {
         healthController.Decrease(damage);
+        healthController.AdjustVisualsHorizontally();
     }
 
     public int GiveDamage()

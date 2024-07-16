@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
             throw new RuntimeWrappedException("Player is trying to take negative damage: " + damage);
         }
         healthController.Decrease(damage);
+        healthController.AdjustVisualsVertically();
     }
 
     public int GiveDamage(HitResult.Result result)
