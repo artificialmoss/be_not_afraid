@@ -8,8 +8,6 @@ public class Synchronizer : SingletonBase<Synchronizer>
     
     [SerializeField] private AudioSource humanScream;
     [SerializeField] private AudioSource monsterScream;
-    [SerializeField] private AudioSource humanDeathScream;
-    [SerializeField] private AudioSource monsterDeathScream;
 
     public void Start()
     {
@@ -18,9 +16,9 @@ public class Synchronizer : SingletonBase<Synchronizer>
 
     public void OnTimedObjectActivation(double activationTime)
     {
-        if (currentTapDescriptor.IsValidTapTime() && currentTapDescriptor.IsValidUntapTime())
+        if (currentTapDescriptor.IsValidTap())
         {
-            
+            monsterScream.Play();
             SendToEvaluationAndDestroy();
         }
         currentTapDescriptor.Appearance = activationTime;
@@ -40,7 +38,12 @@ public class Synchronizer : SingletonBase<Synchronizer>
         currentTapDescriptor.TapTime = clickTime;
         if (currentTapDescriptor.IsValidTimedObject())
         {
+            humanScream.Play();
             SendToEvaluationAndDestroy();
+        }
+        else
+        {
+            monsterScream.Play();
         }
     }
 

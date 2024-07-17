@@ -4,6 +4,7 @@ using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class BeatController : MonoBehaviour
 {
     [SerializeField] private int counter = 0;
@@ -14,14 +15,19 @@ public class BeatController : MonoBehaviour
     [SerializeField] private int nextBeatCounter = 0;
     [SerializeField] private double beatTimeOffset;
 
-    [SerializeField] private string filename;
+    [SerializeField] private AudioClip song;
+    [SerializeField] private TextAsset timingsJson;
+    [SerializeField] private AudioSource audioSource;
 
     void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
+        while (!song.preloadAudioData){}
+
         beatTimeOffset = TimedObjectsState.Timings.midpoint * TimedObjectsState.Instance.attackSpeedModifier;
+        timings = JsonUtility.FromJson<TimingsList>(timingsJson.text).Timings;
+        audioSource.Play();
         startTime = AudioSettings.dspTime;
-        timings = JsonUtility.FromJson<TimingsList>(
-            File.ReadAllText(Path.Combine(Path.Combine(Application.dataPath, "Resources"), filename))).Timings;
     }
 
     public void Update()
@@ -30,7 +36,7 @@ public class BeatController : MonoBehaviour
         {
             onOnbeatDetected(timings[nextBeatCounter++]);
         }
-}
+    }
 
     void onOnbeatDetected(double beatTime)
     {

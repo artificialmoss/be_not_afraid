@@ -155,6 +155,10 @@ PrefabInstance:
       propertyPath: filename
       value: timings_level2.json
       objectReference: {fileID: 0}
+    - target: {fileID: 1970678205694493184, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
+      propertyPath: hitPerBeats
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2784051000743458021, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.81235

@@ -8,6 +8,11 @@ public class LevelState : SingletonBase<LevelState>
     [SerializeField] private List<Monster> monsters;
     [SerializeField] private int currentMonsterIndex = 0;
     
+    [SerializeField] private AudioSource humanDeathScream;
+    [SerializeField] private AudioSource monsterDeathScream;
+    
+    [SerializeField] private GameObject winPrefab;
+    
     public void HandleAttack(HitResult.Result result)
     {
         var attack = AttackMatcher.Instance.GetAttack(result);
@@ -26,13 +31,15 @@ public class LevelState : SingletonBase<LevelState>
         // Debug.Log(result);
         if (player.GetHealth() == 0)
         {
+            humanDeathScream.Play();
             SceneManager.LoadSceneAsync("LoseEndScreen");
         }
 
         if (monsters[currentMonsterIndex].GetHealth() == 0)
         {
+            monsterDeathScream.Play();
             // SceneManager.LoadSceneAsync("WinEndscreen");
-            
+            Instantiate(winPrefab, Vector3.zero, Quaternion.identity);
         }
     }
 }

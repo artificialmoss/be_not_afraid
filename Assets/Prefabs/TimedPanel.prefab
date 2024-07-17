@@ -154,14 +154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c501abfee648d7b9895a7226b5e8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anticipationTime: 0
-  appearanceTime: 0
-  disappearanceTime: 0
-  destructionTime: 0
+  timings:
+    anticipationTime: 0
+    appearanceTime: 0
+    disappearanceTime: 0
+    destructionTime: 0
   state: 0
   startingPosition: {x: 0, y: 0}
-  appearanceOffset: 0.46
-  disappearanceOffset: 0.72
-  destructionOffset: 1
   timeDistance: 0
-  distance: {x: 0, y: -965}
+  distance: {x: 0, y: -1400}

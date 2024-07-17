@@ -11,37 +11,37 @@ public class ResultHandler : SingletonBase<ResultHandler>
         {
             case HitResult.Result.Perfect:
             {
-                resultDisplayer.text = "Perfect";
+                resultDisplayer.text = "Отлично!";
                 break;
             }
             case HitResult.Result.Good:
             {
-                resultDisplayer.text = "Good";
+                resultDisplayer.text = "Хорошо!";
                 break;
             }
             case HitResult.Result.Okay:
             {
-                resultDisplayer.text = "Okay";
+                resultDisplayer.text = "Отбился!";
                 break;
             }
             case HitResult.Result.Early:
             {
-                resultDisplayer.text = "Early";
+                resultDisplayer.text = "Промах!";
                 break;
             }
             case HitResult.Result.Late:
             {
-                resultDisplayer.text = "Late";
+                resultDisplayer.text = "Промах!";
                 break;
             }
             case HitResult.Result.Miss:
             {
-                resultDisplayer.text = "Miss";
+                resultDisplayer.text = "Промах!";
                 break;
             }
             case HitResult.Result.Why:
             {
-                resultDisplayer.text = "Miss (no attack)";
+                resultDisplayer.text = "Ты куда лезешь...";
                 break;
             }
             default:
