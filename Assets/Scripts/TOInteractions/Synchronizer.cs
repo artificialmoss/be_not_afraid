@@ -1,9 +1,15 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Synchronizer : SingletonBase<Synchronizer>
 {
     [SerializeField] private SingleTapDescriptor currentTapDescriptor;
+    
+    [SerializeField] private AudioSource humanScream;
+    [SerializeField] private AudioSource monsterScream;
+    [SerializeField] private AudioSource humanDeathScream;
+    [SerializeField] private AudioSource monsterDeathScream;
 
     public void Start()
     {
@@ -14,6 +20,7 @@ public class Synchronizer : SingletonBase<Synchronizer>
     {
         if (currentTapDescriptor.IsValidTapTime() && currentTapDescriptor.IsValidUntapTime())
         {
+            
             SendToEvaluationAndDestroy();
         }
         currentTapDescriptor.Appearance = activationTime;

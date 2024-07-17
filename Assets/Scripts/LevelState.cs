@@ -31,7 +31,8 @@ public class LevelState : SingletonBase<LevelState>
 
         if (monsters[currentMonsterIndex].GetHealth() == 0)
         {
-            SceneManager.LoadSceneAsync("WinEndscreen");
+            // SceneManager.LoadSceneAsync("WinEndscreen");
+            
         }
     }
 }
