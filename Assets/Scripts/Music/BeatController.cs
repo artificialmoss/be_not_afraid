@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class BeatController : MonoBehaviour
 {
-    [SerializeField] private int counter = 8;
+    [SerializeField] private int counter = 0;
+    [SerializeField] private int beatOffset = 0;
+    [SerializeField] private int HitPerBeats = 4;s
     [SerializeField] private List<double> timings;
     [SerializeField] private double startTime;
     [SerializeField] private int nextBeatCounter = 0;
@@ -16,20 +18,11 @@ public class BeatController : MonoBehaviour
 
     void Start()
     {
-        //Select the instance of AudioProcessor and pass a reference
-        //to this object
-        // AudioProcessor processor = FindObjectOfType<AudioProcessor>();
-        // processor.onBeat.AddListener(onOnbeatDetected);
-        // processor.onSpectrum.AddListener (onSpectrum);
         beatTimeOffset = TimedObjectsState.Timings.midpoint * TimedObjectsState.Instance.attackSpeedModifier;
         startTime = AudioSettings.dspTime;
         timings = JsonUtility.FromJson<TimingsList>(
             File.ReadAllText(Path.Combine(Path.Combine(Application.dataPath, "Resources"), filename))).Timings;
     }
-
-    //this event will be called every time a beat is detected.
-    //Change the threshold parameter in the inspector
-    //to adjust the sensitivity
 
     public void Update()
     {
@@ -42,22 +35,9 @@ public class BeatController : MonoBehaviour
     void onOnbeatDetected(double beatTime)
     {
         ++counter;
-        // if (counter % 4 == 2)
-        // {
+        if (counter % 4 == 2)
+        {
             MoleGenerator.Instance.CreateTimedObjectAtTime(beatTime);
-        // }
+        }
     }
-
-    //This event will be called every frame while music is playing
-    // void onSpectrum (float[] spectrum)
-    // {
-    //     //The spectrum is logarithmically averaged
-    //     //to 12 bands
-    //
-    //     for (int i = 0; i < spectrum.Length; ++i) {
-    //         Vector3 start = new Vector3 (i, 0, 0);
-    //         Vector3 end = new Vector3 (i, spectrum [i], 0);
-    //         Debug.DrawLine (start, end);
-    //     }
-    // }
 }
