@@ -12,6 +12,8 @@ public class BeatController : MonoBehaviour
     [SerializeField] private int nextBeatCounter = 0;
     [SerializeField] private double beatTimeOffset;
 
+    [SerializeField] private string filename;
+
     void Start()
     {
         //Select the instance of AudioProcessor and pass a reference
@@ -19,10 +21,10 @@ public class BeatController : MonoBehaviour
         // AudioProcessor processor = FindObjectOfType<AudioProcessor>();
         // processor.onBeat.AddListener(onOnbeatDetected);
         // processor.onSpectrum.AddListener (onSpectrum);
-        beatTimeOffset = TimedObjectsState.Timings.appearanceOffset;
+        beatTimeOffset = TimedObjectsState.Timings.midpoint * TimedObjectsState.Instance.attackSpeedModifier;
         startTime = AudioSettings.dspTime;
         timings = JsonUtility.FromJson<TimingsList>(
-            File.ReadAllText(Path.Combine(Path.Combine(Application.dataPath, "Resources"), "timings_simple.json"))).Timings;
+            File.ReadAllText(Path.Combine(Path.Combine(Application.dataPath, "Resources"), filename))).Timings;
     }
 
     //this event will be called every time a beat is detected.
@@ -40,16 +42,11 @@ public class BeatController : MonoBehaviour
 
     void onOnbeatDetected()
     {
-        // todo 
-        // timings.Add(AudioSettings.dspTime);
         ++counter;
-        if (counter % 4 == 2)
-        {
+        // if (counter % 4 == 2)
+        // {
             MoleGenerator.Instance.CreateTimedObject();
-        }
-
-
-        // Debug.Log(AudioSettings.dspTime + " beat");
+        // }
     }
 
     //This event will be called every frame while music is playing

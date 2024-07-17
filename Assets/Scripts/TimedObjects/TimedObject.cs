@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public abstract class TimedObject : MonoBehaviour
 {
-    [SerializeField] protected TimedObjectsState.Timings timings;
+    [SerializeField] protected TimedObjectsState.Timings timings = TimedObjectsState.Timings.Zero();
 
     [Serializable]
     private enum State
@@ -20,9 +20,19 @@ public abstract class TimedObject : MonoBehaviour
 
     // [SerializeField] protected bool hasAppeared = false;
 
+    // public TimedObject(double appearanceTime)
+    // {
+    //     timings = TimedObjectsState.Timings.GenerateAtAppearanceTime(appearanceTime);
+    // }
+
     // имитация музыки?
     public virtual void Start()
     {
+    }
+
+    public void SetBeat(double beat)
+    {
+        timings = TimedObjectsState.Timings.GenerateAtBeat(beat);
     }
 
     protected abstract void Appear();

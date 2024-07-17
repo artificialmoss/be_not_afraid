@@ -8,4 +8,10 @@ public class MoleGenerator : TimedObjectsGenerator
     {
         Instantiate(prefab, gameObject.transform.position, Quaternion.identity, gameObject.transform);
     }
+
+    public override void CreateTimedObjectAtTime(double beat)
+    {
+        var newTO = Instantiate(prefab, gameObject.transform.position, Quaternion.identity, gameObject.transform);
+        newTO.GetComponent<TimedObject>().SetBeat(beat);
+    }
 }
