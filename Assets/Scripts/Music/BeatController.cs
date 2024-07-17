@@ -8,7 +8,7 @@ public class BeatController : MonoBehaviour
 {
     [SerializeField] private int counter = 0;
     [SerializeField] private int beatOffset = 0;
-    [SerializeField] private int HitPerBeats = 4;s
+    [SerializeField] private int HitPerBeats = 4;
     [SerializeField] private List<double> timings;
     [SerializeField] private double startTime;
     [SerializeField] private int nextBeatCounter = 0;
