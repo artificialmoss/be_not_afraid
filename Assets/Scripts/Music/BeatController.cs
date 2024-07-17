@@ -8,7 +8,7 @@ public class BeatController : MonoBehaviour
 {
     [SerializeField] private int counter = 0;
     [SerializeField] private int beatOffset = 0;
-    [SerializeField] private int HitPerBeats = 4;
+    [SerializeField] private int hitPerBeats = 4;
     [SerializeField] private List<double> timings;
     [SerializeField] private double startTime;
     [SerializeField] private int nextBeatCounter = 0;
@@ -35,7 +35,7 @@ public class BeatController : MonoBehaviour
     void onOnbeatDetected(double beatTime)
     {
         ++counter;
-        if (counter % 4 == 2)
+        if (counter % hitPerBeats == beatOffset)
         {
             MoleGenerator.Instance.CreateTimedObjectAtTime(beatTime);
         }
