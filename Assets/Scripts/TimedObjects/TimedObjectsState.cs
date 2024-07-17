@@ -13,7 +13,7 @@ public class TimedObjectsState : SingletonBase<TimedObjectsState>
         [SerializeField] public double disappearanceTime;
         [SerializeField] public double destructionTime;
 
-        [SerializeField] private static double appearanceOffset = 0.44;
+        [SerializeField] public readonly static double appearanceOffset = 0.44;
         [SerializeField] private static double disappearanceOffset = 0.717;
         [SerializeField] private static double destructionOffset = 1;
 

@@ -10,7 +10,7 @@ public class BeatController : MonoBehaviour
     [SerializeField] private List<double> timings;
     [SerializeField] private double startTime;
     [SerializeField] private int nextBeatCounter = 0;
-    [SerializeField] private double beatTimeOffset = 0.5;
+    [SerializeField] private double beatTimeOffset;
 
     void Start()
     {
@@ -19,6 +19,7 @@ public class BeatController : MonoBehaviour
         // AudioProcessor processor = FindObjectOfType<AudioProcessor>();
         // processor.onBeat.AddListener(onOnbeatDetected);
         // processor.onSpectrum.AddListener (onSpectrum);
+        beatTimeOffset = TimedObjectsState.Timings.appearanceOffset;
         startTime = AudioSettings.dspTime;
         timings = JsonUtility.FromJson<TimingsList>(
             File.ReadAllText(Path.Combine(Path.Combine(Application.dataPath, "Resources"), "timings_simple.json"))).Timings;
