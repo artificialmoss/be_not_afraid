@@ -35,17 +35,16 @@ public class BeatController : MonoBehaviour
     {
         if (AudioSettings.dspTime + beatTimeOffset >= timings[nextBeatCounter] + startTime)
         {
-            ++nextBeatCounter;
-            onOnbeatDetected();
+            onOnbeatDetected(timings[nextBeatCounter++]);
         }
 }
 
-    void onOnbeatDetected()
+    void onOnbeatDetected(double beatTime)
     {
         ++counter;
         // if (counter % 4 == 2)
         // {
-            MoleGenerator.Instance.CreateTimedObject();
+            MoleGenerator.Instance.CreateTimedObjectAtTime(beatTime);
         // }
     }
 
