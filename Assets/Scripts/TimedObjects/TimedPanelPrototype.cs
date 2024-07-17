@@ -6,9 +6,6 @@ using UnityEngine.UI;
 public class TimedPanelPrototype : TimedObject
 {
     [SerializeField] private Vector2 startingPosition;
-    [SerializeField] private double appearanceOffset = 0.44;
-    [SerializeField] private double disappearanceOffset = 0.717;
-    [SerializeField] private double destructionOffset = 1;
 
     // старт -- 100, центр кнопки -- -615, полкнопки -- 120
     // то есть -- появление -495 (595->600/1000), исчезновение 835/1000, можно марджин 5/1000
@@ -23,31 +20,24 @@ public class TimedPanelPrototype : TimedObject
     public override void Start()
     {
         startingPosition = gameObject.transform.position;
-        
-        anticipationTime = AudioSettings.dspTime;
-        appearanceTime = AudioSettings.dspTime + appearanceOffset;
-        disappearanceTime = AudioSettings.dspTime + disappearanceOffset;
-        destructionTime = AudioSettings.dspTime + destructionOffset;
-        
-        timeDistance = destructionTime - anticipationTime;
+
+        timings = TimedObjectsState.Timings.GenerateFromNow();
+
+        timeDistance = TimedObjectsState.Instance.attackSpeedModifier * TimedObjectsState.Timings.TimeDistance();
     }
 
     protected override void Move()
     {
-        float point = (float)((AudioSettings.dspTime - anticipationTime) / timeDistance);
+        float point = (float)((AudioSettings.dspTime - timings.anticipationTime) / timeDistance);
         gameObject.transform.position = startingPosition + (point * distance);
     }
 
     protected override void Appear()
     {
-        // Debug.Log("APPEAR at " + gameObject.transform.position);
     }
 
     protected override void Disappear()
     {
-        // Debug.Log("Disappear at " + gameObject.transform.position);
-        // Destroy(gameObject);
-        // Destroy(gameObject);
     }
 
     protected override void DestroyTO()

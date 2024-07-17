@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class BeatController : MonoBehaviour
 {
-    [SerializeField] private int counter = 0;
+    [SerializeField] private int counter = 8;
     [SerializeField] private List<double> timings;
     [SerializeField] private double startTime;
     [SerializeField] private int nextBeatCounter = 0;
@@ -42,10 +42,10 @@ public class BeatController : MonoBehaviour
         // todo 
         // timings.Add(AudioSettings.dspTime);
         ++counter;
-        // if (counter % 4 == 2)
-        // {
+        if (counter % 4 == 2)
+        {
             MoleGenerator.Instance.CreateTimedObject();
-        // }
+        }
 
 
         // Debug.Log(AudioSettings.dspTime + " beat");

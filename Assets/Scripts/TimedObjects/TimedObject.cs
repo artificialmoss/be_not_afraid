@@ -4,10 +4,7 @@ using UnityEngine.EventSystems;
 
 public abstract class TimedObject : MonoBehaviour
 {
-    [SerializeField] protected double anticipationTime;
-    [SerializeField] protected double appearanceTime;
-    [SerializeField] protected double disappearanceTime;
-    [SerializeField] protected double destructionTime;
+    [SerializeField] protected TimedObjectsState.Timings timings;
 
     [Serializable]
     private enum State
@@ -26,8 +23,6 @@ public abstract class TimedObject : MonoBehaviour
     // имитация музыки?
     public virtual void Start()
     {
-        appearanceTime = AudioSettings.dspTime + 100;
-        disappearanceTime = AudioSettings.dspTime + 10000;
     }
 
     protected abstract void Appear();
@@ -44,14 +39,14 @@ public abstract class TimedObject : MonoBehaviour
         {
             case State.Nothing:
             {
-                if (AudioSettings.dspTime < anticipationTime) return;
+                if (AudioSettings.dspTime < timings.anticipationTime) return;
                 state = State.Anticipation;
                 
                 goto case State.Anticipation;
             }
             case State.Anticipation:
             {
-                if (AudioSettings.dspTime < appearanceTime)
+                if (AudioSettings.dspTime < timings.appearanceTime)
                 {
                     Move();
                     return;
@@ -59,13 +54,13 @@ public abstract class TimedObject : MonoBehaviour
 
                 state = State.Appeared;
                 Appear();
-                Synchronizer.Instance.OnTimedObjectActivation(appearanceTime);
+                Synchronizer.Instance.OnTimedObjectActivation(timings.appearanceTime);
 
                 goto case State.Appeared;
             }
             case State.Appeared:
             {
-                if (AudioSettings.dspTime < disappearanceTime)
+                if (AudioSettings.dspTime < timings.disappearanceTime)
                 {
                     Move();
                     return;
@@ -73,14 +68,14 @@ public abstract class TimedObject : MonoBehaviour
 
                 state = State.Disappeared;
                 Disappear();
-                Synchronizer.Instance.OnTimedObjectDeactivation(disappearanceTime);
+                Synchronizer.Instance.OnTimedObjectDeactivation(timings.disappearanceTime);
 
                 goto case State.Disappeared;
             }
             case State.Disappeared:
             {
                 Move();
-                if (AudioSettings.dspTime < destructionTime)
+                if (AudioSettings.dspTime < timings.destructionTime)
                 {
                     return;
                 }
