@@ -7,49 +7,19 @@ public class LevelState : SingletonBase<LevelState>
     [SerializeField] private Player player;
     [SerializeField] private List<Monster> monsters;
     [SerializeField] private int currentMonsterIndex = 0;
-
+    
     public void HandleAttack(HitResult.Result result)
     {
-        switch (result)
+        var attack = AttackMatcher.Instance.GetAttack(result);
+        if (AttackMatcher.Instance.IsPlayerAttack(attack))
         {
-            case HitResult.Result.Early:
-            {
-                goto case HitResult.Result.Miss;
-            }
-            case HitResult.Result.Late:
-            {
-                goto case HitResult.Result.Miss;
-            }
-            case HitResult.Result.Miss:
-            {
-                var damage = monsters[currentMonsterIndex].GiveDamage();
-                player.TakeDamage(damage);
-                break;
-            }
-            case HitResult.Result.Why:
-            {
-                var damage = monsters[currentMonsterIndex].GiveDamage();
-                player.TakeDamage(damage);
-                break;
-            }
-            case HitResult.Result.Okay:
-            {
-                var damage = player.GiveDamage(result);
-                monsters[currentMonsterIndex].TakeDamage(damage);
-                break;
-            }
-            case HitResult.Result.Good:
-            {
-                var damage = player.GiveDamage(result);
-                monsters[currentMonsterIndex].TakeDamage(damage);
-                break;
-            }
-            case HitResult.Result.Perfect:
-            {
-                var damage = player.GiveDamage(result);
-                monsters[currentMonsterIndex].TakeDamage(damage);
-                break;
-            }
+            var damage = player.GiveDamage(attack);
+            monsters[currentMonsterIndex].TakeDamage(damage);
+        }
+        else
+        {
+            var damage = monsters[currentMonsterIndex].GiveDamage(attack);
+            player.TakeDamage(damage);
         }
         // Debug.Log("Player: " + player.GetHealth());
         // Debug.Log("Monster: " + monsters[currentMonsterIndex].GetHealth());

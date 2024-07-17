@@ -4,29 +4,24 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
 [RequireComponent(typeof(HealthController))]
-public class Monster : MonoBehaviour
+public class Monster : Character
 {
     [SerializeField] private int attackDamage = 5;
-    [SerializeField] private HealthController healthController;
-
-    public void Start()
-    {
-        healthController = gameObject.GetComponent<HealthController>();
-    }
-
-    public void TakeDamage(int damage)
-    {
-        healthController.Decrease(damage);
-        healthController.AdjustVisualsHorizontally();
-    }
-
-    public int GiveDamage()
-    {
-        return attackDamage;
-    }
+    [SerializeField] private int missDamage = 3;
     
     public int GetHealth()
     {
         return healthController.GetHealth();
+    }
+
+    protected override void InitializeAttacks()
+    {
+        damagePerAttack.Add(Attacks.BaseMonsterAttack, attackDamage);
+        damagePerAttack.Add(Attacks.WhyAttack, missDamage);
+    }
+
+    protected override void VisualizeDamage()
+    {
+        healthController.AdjustVisualsHorizontally();
     }
 }

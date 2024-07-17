@@ -425,6 +425,7 @@ GameObject:
   - component: {fileID: 351263394}
   - component: {fileID: 351263393}
   - component: {fileID: 351263395}
+  - component: {fileID: 351263396}
   m_Layer: 0
   m_Name: LevelState
   m_TagString: Untagged
@@ -476,6 +477,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSpeedModifier: 2
+--- !u!114 &351263396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351263392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f17df70638524f0296e67b4ad74bdcc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &456364302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,8 +1217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ebcc66a67d4a47ad2160beb2ad6adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 5
   healthController: {fileID: 0}
+  attackDamage: 5
+  missDamage: 3
 --- !u!114 &1043374937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1374,10 +1388,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402c36955d26476b9540c09ec298e203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseAttackDamage: 10
-  perfectAttackDamage: 20
-  okayAttackDamage: 5
   healthController: {fileID: 0}
+  goodAttackDamage: 10
+  perfectAttackDamage: 20
+  baseAttackDamage: 10
 --- !u!114 &1459910577
 MonoBehaviour:
   m_ObjectHideFlags: 0
