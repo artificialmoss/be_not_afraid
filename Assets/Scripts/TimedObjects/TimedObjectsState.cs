@@ -36,7 +36,6 @@ public class TimedObjectsState : SingletonBase<TimedObjectsState>
 
         public static Timings GenerateAtBeat(double beat)
         {
-            var midpoint = (appearanceOffset + disappearanceOffset) / 2;
             var appearanceTime = beat + (appearanceOffset - midpoint) * Instance.attackSpeedModifier;
             var disappearanceTime = beat + (disappearanceOffset - midpoint) * Instance.attackSpeedModifier;
             var anticipationTime = beat - midpoint * Instance.attackSpeedModifier;
@@ -47,17 +46,6 @@ public class TimedObjectsState : SingletonBase<TimedObjectsState>
                 appearanceTime = appearanceTime,
                 disappearanceTime = disappearanceTime,
                 destructionTime = destructionTime
-            };
-        }
-
-        public static Timings Zero()
-        {
-            return new Timings
-            {
-                anticipationTime = 0,
-                appearanceTime = appearanceOffset * Instance.attackSpeedModifier,
-                disappearanceTime = disappearanceOffset * Instance.attackSpeedModifier,
-                destructionTime = destructionOffset * Instance.attackSpeedModifier
             };
         }
     }

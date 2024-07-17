@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public abstract class TimedObject : MonoBehaviour
 {
-    [SerializeField] protected TimedObjectsState.Timings timings = TimedObjectsState.Timings.Zero();
+    [SerializeField] protected TimedObjectsState.Timings timings;
 
     [Serializable]
     private enum State
