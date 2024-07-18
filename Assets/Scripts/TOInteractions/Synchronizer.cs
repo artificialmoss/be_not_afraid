@@ -16,7 +16,7 @@ public class Synchronizer : SingletonBase<Synchronizer>
 
     public void OnTimedObjectActivation(double activationTime)
     {
-        if (currentTapDescriptor.IsValidTap())
+        if (currentTapDescriptor.IsValidTapTime())
         {
             monsterScream.Play();
             SendToEvaluationAndDestroy();
@@ -38,12 +38,12 @@ public class Synchronizer : SingletonBase<Synchronizer>
         currentTapDescriptor.TapTime = clickTime;
         if (currentTapDescriptor.IsValidTimedObject())
         {
-            humanScream.Play();
+            monsterScream.Play();
             SendToEvaluationAndDestroy();
         }
         else
         {
-            monsterScream.Play();
+            humanScream.Play();
         }
     }
 

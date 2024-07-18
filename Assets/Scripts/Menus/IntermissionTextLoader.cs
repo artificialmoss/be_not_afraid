@@ -2,10 +2,7 @@ using System;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
-
 
 namespace Menus
 {
@@ -25,7 +22,7 @@ namespace Menus
             End
         }
 
-        [SerializeField] private SceneAsset next;
+        [SerializeField] private string nextScene;
 
         [SerializeField] private Status status;
 
@@ -93,7 +90,7 @@ namespace Menus
                     panel.color = color;
                     if (color.a >= epsMax)
                     {
-                        SceneManager.LoadSceneAsync(next.name);
+                        SceneManager.LoadSceneAsync(nextScene);
                     }
                     break;
                 }

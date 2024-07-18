@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoaderButton : MonoBehaviour
 {
-    [SerializeField] private SceneAsset scene;
+    [SerializeField] private string scene;
     
     public void OnClick()
     {
-        SceneManager.LoadSceneAsync(scene.name);
+        SceneManager.LoadSceneAsync(scene);
     }
 }

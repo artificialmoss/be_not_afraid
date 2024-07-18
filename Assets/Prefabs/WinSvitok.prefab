@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe2b28e52e65f94a889b0e350073134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: {fileID: 102900000, guid: 2810ef9621841f041b16cc1a72616fee, type: 3}
+  scene: LoseEndScreen
 --- !u!114 &4185268739881693715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe2b28e52e65f94a889b0e350073134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: {fileID: 102900000, guid: 48f93e5549341624bbcd814a0c38b9f7, type: 3}
+  scene: NewScene
 --- !u!114 &4640802201081599148
 MonoBehaviour:
   m_ObjectHideFlags: 0

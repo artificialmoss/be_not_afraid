@@ -32,6 +32,10 @@ public class BeatController : MonoBehaviour
 
     public void Update()
     {
+        if (nextBeatCounter == timings.Count)
+        {
+            nextBeatCounter = 0;
+        }
         if (AudioSettings.dspTime + beatTimeOffset >= timings[nextBeatCounter] + startTime)
         {
             onOnbeatDetected(timings[nextBeatCounter++]);
