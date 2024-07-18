@@ -22,7 +22,7 @@ public class BeatController : MonoBehaviour
     void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
-        while (!song.preloadAudioData){}
+        song.LoadAudioData();
 
         beatTimeOffset = TimedObjectsState.Timings.midpoint * TimedObjectsState.Instance.attackSpeedModifier;
         timings = JsonUtility.FromJson<TimingsList>(timingsJson.text).Timings;

@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!82 &30996653 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3113499509788525589, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
+  m_PrefabInstance: {fileID: 201942761}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &201942761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131,10 +136,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1811046449}
     m_Modifications:
+    - target: {fileID: 392804135728014601, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
+      propertyPath: humanScream
+      value: 
+      objectReference: {fileID: 1964240234}
+    - target: {fileID: 392804135728014601, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
+      propertyPath: monsterScream
+      value: 
+      objectReference: {fileID: 1910092955}
     - target: {fileID: 541918609052586649, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
       propertyPath: m_Name
       value: LevelStructure
       objectReference: {fileID: 0}
+    - target: {fileID: 792834755366294298, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
+      propertyPath: humanDeathScream
+      value: 
+      objectReference: {fileID: 1664681421}
+    - target: {fileID: 792834755366294298, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
+      propertyPath: monsterDeathScream
+      value: 
+      objectReference: {fileID: 30996653}
     - target: {fileID: 1101953626241704716, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3982381
@@ -152,6 +173,10 @@ PrefabInstance:
       value: 440
       objectReference: {fileID: 0}
     - target: {fileID: 1970678205694493184, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
+      propertyPath: song
+      value: 
+      objectReference: {fileID: 8300000, guid: 6268ae0ac23868c479898eedc829002a, type: 3}
+    - target: {fileID: 1970678205694493184, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
       propertyPath: filename
       value: timings_level2.json
       objectReference: {fileID: 0}
@@ -159,6 +184,14 @@ PrefabInstance:
       propertyPath: hitPerBeats
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1970678205694493184, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
+      propertyPath: timingsJson
+      value: 
+      objectReference: {fileID: 4900000, guid: b400b2d0dc1d01a45bd451c71fc84fe2, type: 3}
+    - target: {fileID: 2529394440248523733, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6268ae0ac23868c479898eedc829002a, type: 3}
     - target: {fileID: 2784051000743458021, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.81235
@@ -332,6 +365,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!82 &1664681421 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6487671106576888957, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
+  m_PrefabInstance: {fileID: 201942761}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1811046446
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +381,7 @@ GameObject:
   - component: {fileID: 1811046449}
   - component: {fileID: 1811046448}
   - component: {fileID: 1811046447}
+  - component: {fileID: 1811046450}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -425,6 +464,60 @@ Transform:
   - {fileID: 2018838626}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1811046450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811046446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+--- !u!82 &1910092955 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1018539697571835710, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
+  m_PrefabInstance: {fileID: 201942761}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1964240234 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4337931584477132016, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}
+  m_PrefabInstance: {fileID: 201942761}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2018838626 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5781950464353409273, guid: a2ea0517bdce48246a90ee961b5f43e8, type: 3}

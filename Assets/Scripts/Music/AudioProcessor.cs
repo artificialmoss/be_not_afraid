@@ -1,4 +1,5 @@
 // source link https://github.com/allanpichardo/Unity-Beat-Detection
+// used for song analysis and collecting timings into json
 
 /*
  * Copyright (c) 2015 Allan Pichardo
