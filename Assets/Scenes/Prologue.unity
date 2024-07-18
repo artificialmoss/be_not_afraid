@@ -435,11 +435,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3467533721311953403, guid: 432d91b53d2ce7943bc5f3123ddc5465, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632033201119579388, guid: 432d91b53d2ce7943bc5f3123ddc5465, type: 3}
+      propertyPath: epsMin
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4632033201119579388, guid: 432d91b53d2ce7943bc5f3123ddc5465, type: 3}
       propertyPath: nextScene
       value: Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632033201119579388, guid: 432d91b53d2ce7943bc5f3123ddc5465, type: 3}
+      propertyPath: alphaMultiplier
+      value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632033201119579388, guid: 432d91b53d2ce7943bc5f3123ddc5465, type: 3}
+      propertyPath: alphaMultiplierIncrease
+      value: 1.01
       objectReference: {fileID: 0}
     - target: {fileID: 6029763552459600082, guid: 432d91b53d2ce7943bc5f3123ddc5465, type: 3}
       propertyPath: m_Pivot.x

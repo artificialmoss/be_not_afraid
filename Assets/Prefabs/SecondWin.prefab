@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe2b28e52e65f94a889b0e350073134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: YetAnotherScene
+  scene: YetAnotherLevel
 --- !u!114 &4640802201081599148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,7 +625,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0443\u0440\u043E\u0432\u0435\u043D\u044C 0 \u043F\u0440\u043E\u0439\u0434\u0435\u043D"
+  m_text: "\u0443\u0440\u043E\u0432\u0435\u043D\u044C 1 \u043F\u0440\u043E\u0439\u0434\u0435\u043D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 533cfe9179cc9414c8cdbf0dc62cb6fd, type: 2}
   m_sharedMaterial: {fileID: -2619848401688254076, guid: 533cfe9179cc9414c8cdbf0dc62cb6fd, type: 2}
@@ -1145,7 +1145,7 @@ GameObject:
   - component: {fileID: 4524048835460756296}
   - component: {fileID: 7659128715308070786}
   m_Layer: 5
-  m_Name: WinSvitok
+  m_Name: SecondWin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
