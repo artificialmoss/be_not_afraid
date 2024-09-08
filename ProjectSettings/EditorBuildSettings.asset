@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Prologue.unity
+    guid: 478e374b03203544ba5d8d230b39805b
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/LoseEndScreen.unity
+    guid: 6c8997f946418e94b9002eca4ad1a8f4
+  - enabled: 1
+    path: Assets/Scenes/NewScene.unity
+    guid: 48f93e5549341624bbcd814a0c38b9f7
+  - enabled: 1
+    path: Assets/Scenes/Epilogue.unity
+    guid: 4c1237fb68c17bc478ccdd57eef7c1b4
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 2810ef9621841f041b16cc1a72616fee
+  - enabled: 1
+    path: Assets/Scenes/YetAnotherLevel.unity
+    guid: d8e2940ee051c7343be2f6ec091e2915
+  m_configObjects: {}
